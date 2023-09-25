@@ -49,8 +49,10 @@ namespace RemoveCraftingRecipes
         {
             foreach (IConstructibleObjectGetter constructibleObjectGetter in mod.ConstructibleObjects.Records)
             {
-                var isTempering = constructibleObjectGetter.WorkbenchKeyword.FormKey.Equals(Skyrim.Keyword.CraftingSmithingArmorTable.FormKey);
-                if (!removeTemper && isTempering)
+                var thisWorkbench = constructibleObjectGetter.WorkbenchKeyword.FormKey;
+                var isTemperingArmor = Skyrim.Keyword.CraftingSmithingArmorTable.FormKey.Equals(thisWorkbench);
+                var isTemperingWeapon = Skyrim.Keyword.CraftingSmithingSharpeningWheel.FormKey.Equals(thisWorkbench);
+                if (!removeTemper && (isTemperingArmor || isTemperingWeapon))
                 {
                     continue;
                 }
