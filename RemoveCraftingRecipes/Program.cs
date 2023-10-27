@@ -1,5 +1,4 @@
 using Mutagen.Bethesda;
-using Mutagen.Bethesda.Plugins.Order;
 using Mutagen.Bethesda.FormKeys.SkyrimSE;
 using Mutagen.Bethesda.Synthesis;
 using Mutagen.Bethesda.Skyrim;
@@ -36,7 +35,8 @@ namespace RemoveCraftingRecipes
                 if (trimmingMod is null)
                 {
                     // Unclear how this could happen, but let's go.
-                    throw new Exception(modKey + " is specified in settings but is not found!");
+                    Console.Write(modKey + " not found in mod list. Proceeding.");
+                    continue;
                 }
                 RemoveRecipesFromMod(trimmingMod, Settings.RemoveTempering, state);
             }
